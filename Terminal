@@ -1,0 +1,8 @@
+dotnet build -c Release
+nuget pack MyLibrary.nuspec
+dotnet pack -c Release
+dotnet new console -n TestApp
+cd TestApp
+dotnet nuget add source "путь к\MyLibrary.1.0.0.nupkg" -n LocalNuGet
+dotnet add package MyLibrary --source ../
+dotnet run
